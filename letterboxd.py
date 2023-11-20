@@ -10,9 +10,9 @@ def get_parsed_page(url: str) -> None:
 
     return BeautifulSoup(requests.get(url, headers=headers).text, "lxml")
 
-pagef = get_parsed_page("https://letterboxd.com/yourUserName/followers/")
+pagef = get_parsed_page("https://letterboxd.com/ifur666/followers/")
 dataf = pagef.find_all("img", attrs={'height': '40'})
-page = get_parsed_page("https://letterboxd.com/yourUserName/following/")
+page = get_parsed_page("https://letterboxd.com/ifur666/following/")
 data = page.find_all("img", attrs={'height': '40'})
 
 i = 2
@@ -27,7 +27,7 @@ for person in dataf:
     followers.append(person['alt'])
 
 #look up the number of pages your follower/following list has on your profile
-for i in range(2,7):
+for i in range(5,27):
     page = get_parsed_page("https://letterboxd.com/yourUserName/following/page/" + str(i) + "/")
     data = page.find_all("img", attrs={'height': '40'})
     pagef = get_parsed_page("https://letterboxd.com/yourUserName/followers/page/" + str(i) + "/")
